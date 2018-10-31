@@ -138,8 +138,8 @@ while run:
         while i < (len(vectors)):
             v.add(vectors[i])
             i = i+1
-        print("Analytic: "+vectors[0].toAnalyticString())
-        print("Polar: "+vectors[0].toPolarString())
+        print("Analytic: "+v.toAnalyticString())
+        print("Polar: "+v.toPolarString())
         choice = "ENDING"
 
 
