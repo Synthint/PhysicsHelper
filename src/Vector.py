@@ -2,6 +2,8 @@
 #Vector;
 import math
 class vector:
+        def fmtNum(self,num):
+                return round(num,4)
         angle = 0.1
         magnitude = 0.1
         def __init__(self,magnitude,angle):
@@ -21,12 +23,12 @@ class vector:
             m = self.magnitude
             cosa = math.cos(math.radians(self.angle))
             x = m*cosa
-            return x
+            return self.fmtNum(x)
         def getAnalyticY(self):
             m = self.magnitude
             sina = math.sin(math.radians(self.angle))
             y = m*sina
-            return y
+            return self.fmtNum(y)
 
         def defineFromAnalytic(self,xComp,yComp):
             self.angle = self.getAnalyticAngle(xComp,yComp)
@@ -68,10 +70,12 @@ class vector:
                     a+=180
             elif Ax>0 and Ay<0:
                     a+=180
-            return a
+            return self.fmtNum(a)
 
         def getAnalyticMagnitude(self,Ax,Ay):
-            return math.sqrt((Ax*Ax)+(Ay*Ay))
+            return self.fmtNum(math.sqrt((Ax*Ax)+(Ay*Ay)))
+        
+        
 
 
 

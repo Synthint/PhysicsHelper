@@ -24,12 +24,13 @@ def getAngle(Ax = "none",Ay = "none"):
                     a+=180
             elif Ax>0 and Ay<0:
                     a+=180
+            a = fmtNum(a)
             return a
 
 def getMagnitude(Ax = "none",Ay = "none"):
         if Ax == "none": Ax = float(input('Ax = '))
         if Ay == "none": Ay = float(input('Ay = '))
-        return math.sqrt((Ax*Ax)+(Ay*Ay))
+        return fmtNum(math.sqrt((Ax*Ax)+(Ay*Ay)))
 
 def AnalyticToPolar(xComp = "none",yComp = "none"):
         if xComp == "none": xComp = float(input('xComp = '))
@@ -44,9 +45,9 @@ def polarToAnalytic(mag = "none",ang = "none"):
     if mag == "none": mag = float(input('Magnitude = '))
     if ang == "none": ang = float(input('ang = '))
     
-    cosa = math.cos(math.radians(ang))
+    cosa = fmtNum(math.cos(math.radians(ang)))
     x = mag*cosa
-    sina = math.sin(math.radians(ang))
+    sina = fmtNum(math.sin(math.radians(ang)))
     y = mag*sina
     return "i: "+str(x)+" | "+"j: "+str(y)
 
@@ -66,6 +67,9 @@ def makeVectorAnalytic(i= "none",j = "none"):
     return v
 
 
+def fmtNum(num):
+    return round(num,4)
+    
 
 
 
@@ -92,7 +96,7 @@ while run:
     print("\t")
     #----------------------------------------------------------------
     while choice == 1:
-        print(getAngle())
+        print(fmtNum(getAngle()))
         print("\t")
         if not (input("Repeat calculation?\t") == "yes"):
             choice = "ENDING"
@@ -128,7 +132,7 @@ while run:
     while choice == 6:
         print("Stored Vectors:")
         for i in range(len(vectors)):
-            print(vectors[i].toPolarString())
+            print(vectors[i].toPolarString()+" ||| "+vectors[i].toAnalyticString())
         choice = "ENDING"
     #----------------------------------------------------------------
     while choice == 7:
